@@ -33,7 +33,7 @@ function Prevew() {
 
   useEffect(() => {
     const teslaApiUrl =
-      "https://newsapi.org/v2/everything?q=tesla&from=2023-08-21&sortBy=publishedAt&apiKey=edb94fd84d57470eaa76753bd04eefbc";
+      "https://newsapi.org/v2/everything?q=tesla&from=2023-08-22&sortBy=publishedAt&apiKey=edb94fd84d57470eaa76753bd04eefbc";
 
     axios
       .get(teslaApiUrl)
