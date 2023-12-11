@@ -28,7 +28,7 @@ function Prevew() {
 
   useEffect(() => {
     const teslaApiUrl =
-      "https://newsapi.org/v2/everything?q=tesla&from=2023-08-25&sortBy=publishedAt&apiKey=edb94fd84d57470eaa76753bd04eefbc";
+      "https://newsapi.org/v2/everything?q=tesla&from=2023-11-09&sortBy=publishedAt&apiKey=edb94fd84d57470eaa76753bd04eefbc";
 
     axios
       .get(teslaApiUrl)
@@ -80,6 +80,11 @@ function Prevew() {
           <Link to="/login">
             <button className="btn btn-success">
               <i className="bi bi-person-circle"></i> Login
+            </button>
+          </Link>
+          <Link to="/live">
+            <button className="btn btn-success">
+              <i className="bi bi-person-circle"></i> MKT-Trend
             </button>
           </Link>
         </div>
