@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LogIn() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -16,25 +19,43 @@ function LogIn() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleLoginSuccess = (tokens) => {
+    sessionStorage.setItem("access_token", tokens.accessToken);
+    sessionStorage.setItem("refresh_token", tokens.refreshToken);
+
+    window.location.href = "http://localhost:5173/";
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("Login form submitted:", formData);
+
+    try {
+      const response = await axios.post("http://localhost:3001/login", formData);
+
+      console.log("Login successful:", response.data);
+
+      toast.success("Login successful!");
+
+      handleLoginSuccess(response.data);
+    } catch (error) {
+      console.error("Login failed:", error.message);
+      toast.error("Login failed. Please check your credentials.");
+    }
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center ">
-      <div className="">
-        <h1>Login</h1>
+    <div className="container-fluid d-flex justify-content-center align-items-center vh-100">
+      <div className="col-md-6">
+        <h1 className="text-center mb-4">Login</h1>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formUsername">
-            <Form.Label>Username</Form.Label>
+          <Form.Group controlId="formEmail">
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="text"
-              name="username"
-              value={formData.username}
+              name="email"
+              value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your username"
+              placeholder="Enter your email"
               required
             />
           </Form.Group>
@@ -51,14 +72,19 @@ function LogIn() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" className="w-100 mt-3">
             Login
           </Button>
         </Form>
 
-        <p className="mt-3">
-          Don't have an account? <Link to="/signup">Sign up</Link>
+        <p className="mt-3 text-center">
+          Don't have an account?{" "}
+          <Link to="/signup" className="btn btn-link">
+            Sign up
+          </Link>
         </p>
+
+        <ToastContainer />
       </div>
     </div>
   );

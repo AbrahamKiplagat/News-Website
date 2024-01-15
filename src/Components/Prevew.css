@@ -2,6 +2,12 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+/* Add your custom styles for small screen here */
+.small-screen-styles {
+  background-color: #f8f9fa; /* Background color for the collapsed menu */
+  padding: 10px; /* Additional padding for the collapsed menu items */
+}
+
 
 
 ::-webkit-scrollbar {

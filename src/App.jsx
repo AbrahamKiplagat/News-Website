@@ -8,6 +8,7 @@ import SignUp from './Components/SignUp';
 import NotFound from './Components/NotFound';
 import CryptoGraph from './Components/Coin/live';
 import CryptoTable from './Components/Coin/live';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/quotes" element={<QuotesComponent/>} />
         <Route path="/login" element={<LogIn/>} />
         <Route path="/live" element={<CryptoTable/>} />
+        <Route path="/footer" element={<Footer/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="*" element={<NotFound />} />  
       </Routes>

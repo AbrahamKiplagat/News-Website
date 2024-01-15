@@ -1,0 +1,60 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .logo-container {
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    font-family: 'YourCustomFont', sans-serif;
+    font-size: 24px;
+    color: #ffcc00; /* Custom color for the logo */
+  }
+  
+  .social-media {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .social-link {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .social-link a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .social-link i {
+    font-size: 24px;
+  }
+  
+  .social-link a:hover {
+    color: #ffcc00; /* Custom color on hover */
+  }
+  
+  .copyright p {
+    margin: 0;
+    font-size: 14px;
+    color: #888; /* Custom color for copyright text */
+  }

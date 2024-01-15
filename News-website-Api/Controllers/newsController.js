@@ -41,9 +41,19 @@ module.exports = {
         urlToImage: item.urlToImage,
         publishedAt: item.publishedAt,
       }));
-
+// Fetch news from 'techcrunch' as per your request
+const responseTechCrunch = await axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${apiKey}`);
+const articlesTechCrunch = responseTechCrunch.data.articles.map(item => ({
+  sourceName: item.source.name,
+  author: item.author,
+  title: item.title,
+  description: item.description,
+  url: item.url,
+  urlToImage: item.urlToImage,
+  publishedAt: item.publishedAt,
+}));
       // Concatenate articles from different categories
-      const allArticles = [...articlesTesla, ...articlesApple, ...articlesBusiness];
+      const allArticles = [...articlesTesla, ...articlesApple, ...articlesBusiness,...articlesTechCrunch];
 
       // Store all articles in the MongoDB collection
       await News.insertMany(allArticles);
